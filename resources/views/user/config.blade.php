@@ -5,21 +5,22 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @include('includes.message')
                 <div class="card">
                     <div class="card-header">Configuracion de mi cuenta</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update')}}" aria-label="Configuracion de mi cuenta">
+                        <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data" aria-label="Configuracion de mi cuenta">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="nick"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nick') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('nick') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nick" type="text"
+                                    <input id="nick" type="nick"
                                         class="form-control{{ $errors->has('nick') ? ' is-invalid' : '' }}" name="nick"
-                                        value="{{ Auth::user()->nick }}" required autofocus>
+                                        value="{{ Auth::user()->nick }}" required>
 
                                     @if ($errors->has('nick'))
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +54,7 @@
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
                                         class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}"
-                                        name="surname" value=" {{ Auth::user()->surname}}" required autofocus>
+                                        name="surname" value="{{ Auth::user()->surname}}" required autofocus>
 
                                     @if ($errors->has('surname'))
                                         <span class="invalid-feedback" role="alert">
@@ -62,7 +63,7 @@
                                     @endif
                                 </div>
                             </div>
-
+                            
                             <div class="form-group row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -80,7 +81,24 @@
                                 </div>
                             </div>
 
-                            
+                            <div class="form-group row">
+                                
+                                <label for="image_path"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+
+                                <div class="col-md-6">
+                                @include('includes.avatar')
+                                    <input id="image_path" type="file"
+                                        class="form-control{{ $errors->has('image_path') ? ' is-invalid' : '' }}" name="image_path" required>
+
+                                    @if ($errors->has('image_path'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('image_path') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

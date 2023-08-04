@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS USUARIO(
     image varchar(255),
     created_at datetime,
     updated_at datetime,
-    remember_at varchar(255),
+    remember_token varchar(255),
     CONSTRAINT pk_users PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
