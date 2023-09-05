@@ -12,7 +12,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -57,6 +59,12 @@
                                 <a href="{{ route('home')}}" class="nav-link">Inicio</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('user.index')}}" class="nav-link">Gente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('likes')}}" class="nav-link">Favoritos</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('image.create')}}" class="nav-link">Subir Imagen</a>
                             </li>
                                 &nbsp;
@@ -71,7 +79,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{-- {{ route('perfil') }} --}}" class="dropdown-item">
+                                    <a href="{{ route('profile', ['id' => Auth::user()->id]) }}" class="dropdown-item">
                                         Mi Perfil
                                     </a>
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    protected $table = 'Megusta';
+    protected $table = 'megusta';
 
     //Relacion de Muchos a uno
     public function user()
